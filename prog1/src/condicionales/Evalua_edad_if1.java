@@ -38,5 +38,5 @@ public class Evalua_edad_if1 {
 		
 		
 	}
-//subir
+
 }
