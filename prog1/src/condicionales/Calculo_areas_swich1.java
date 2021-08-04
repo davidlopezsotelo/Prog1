@@ -78,7 +78,15 @@ public class Calculo_areas_swich1 {
 				
 				break;
 				
+				//podemos poner un default para el resto de opciones que no sean correctas
+		
+			default:
+				
+				System.out.println("La opcion seleccionada no es correcta.");
+				
 		}
+		
+		
 
 
 		
