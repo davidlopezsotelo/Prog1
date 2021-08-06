@@ -41,19 +41,36 @@ public class UsoEmpleado {
 		listaEmpleados.add(new Empleado("Pepe",26,1500));
 		
 		
+		/*
+		 * para añadir un elemento en una posicion en concreto
+		 * si ya esta ocupada,la sobreescribe
+		 */
+		
+		listaEmpleados.set(1, new Empleado("Olga",29,1600));
+		
+		
+		/*
+		 * para imprimir una posicion en condreto del ArrayList
+		 * si no ponemos el getter, nos dara la clave del objeto
+		 * 
+		 */
+		
+		System.out.println(listaEmpleados.get(3).dameDatos());
+		
+		
+		
+		
 								System.out.println(listaEmpleados.size());// nos dice cuantos elementos tiene el ArayList
 		
 								/*
 								 * si no queremos añadir mas elementos
 								 * podemos cerrar el Arraylist, para optimizar 
 								 * la memoria con el siguiente metodo
+								 * pero podemos añadir mas elemetos
 								 */
 								
 								listaEmpleados.trimToSize();	
 								
-								
-		
-		
 		
 		//bucle que imprime el array
 		
@@ -61,11 +78,27 @@ public class UsoEmpleado {
 			
 			System.out.println(e.dameDatos());
 		}
+		   System.out.println("");
+		
+		/*
+		 * copiar el ArrayList en un array normal
+		 */
+		
+		Empleado arrayEmpleados[]=new Empleado[listaEmpleados.size()];
+		
+		listaEmpleados.toArray(arrayEmpleados);
+		
+		//recorremos el array
+		
+		for(int i=0;i<arrayEmpleados.length;i++) {
+			
+			System.out.println(arrayEmpleados[i].dameDatos());
+		}
 
 	}
 
 }
-//CREAMOS LA CLASE EMPLEADOS----------------------------------------------
+//CREAMOS LA CLASE EMPLEADOS-------------------------------------------------------------------------------
 
 class Empleado{
 	
