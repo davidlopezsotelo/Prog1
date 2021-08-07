@@ -100,7 +100,7 @@ public class UsoEmpleado {
 }
 //CREAMOS LA CLASE EMPLEADOS-------------------------------------------------------------------------------
 
-class Empleado{
+ class Empleado{
 	
 	private String nombre;
 	private int edad;
