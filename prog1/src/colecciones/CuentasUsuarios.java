@@ -53,6 +53,9 @@ public class CuentasUsuarios {
 		clientes_banco.add(cl5);
 		clientes_banco.add(cl6);
 		
+		
+		
+		
 					/*
 					 * elementos duplicados.
 					 * 
@@ -69,20 +72,38 @@ public class CuentasUsuarios {
 		
 					
 			
+			
+			
 		//recorremos la coleccion con un bucle for each:   (fore+Ctrl+espacio)
 		
 			System.out.println("LISTA DE CLIENTES DEL BANCO\n");
 			
 		for (Cliente cliente : clientes_banco) {
-			
-			
-			
-			System.out.println(cliente.getNombre() + " "
-			 + cliente.getN_cuenta()+" "+cliente.getSaldo());
-			
 
+			System.out.println(cliente.getNombre() + " || "
+			 + cliente.getN_cuenta()+" || "+cliente.getSaldo());
 		}
 
+		
+		
+		
+		/*
+		 * recorrer la lista con un iterador (poco eficiente para este caso)
+		 */
+		
+		Iterator<Cliente> it= clientes_banco.iterator();
+		
+		
+		while(it.hasNext()) {//mientras haya elementos en la lista...
+			
+			//creamos variable donde almacenaremos los nombres
+			
+			String nombre_cliente=it.next().getNombre();
+			
+			System.out.println("\n"+nombre_cliente);
+		}
+		
+		
 	}
 }
 
