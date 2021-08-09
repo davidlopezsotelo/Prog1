@@ -11,48 +11,60 @@ import java.util.*;
 public class Uso_empleado {
 
 	public static void main(String[] args) {
+		
+		/*
+		 * Instanciamos la clase jefatura
+		 */
+		
+		Jefatura jefe_RRHH =new Jefatura("David",5000,1990,5,12);
+		
+		//establecemos el incentivo
+		
+		jefe_RRHH.estableceIncentivo(1000);
 
 		/*
 		 * array de tipo empleados
 		 */
 
-		Empleado[]misEmpleados=new Empleado[4];
+		Empleado[]misEmpleados=new Empleado[6];
 		
 		misEmpleados[0]=new Empleado("Ana", 3000.00, 2000, 07, 07);
 		misEmpleados[1]=new Empleado("Carlos", 4000.00, 1995, 03, 17);
 		misEmpleados[2]=new Empleado("paco", 2100.00, 2005, 02, 01);
 		misEmpleados[3]=new Empleado("antonio", 1900.00, 2000, 9, 27);
 		
+		misEmpleados[4]=jefe_RRHH;//polimorfismo, principio de sutitucion.
+		
+		misEmpleados[5]=new Jefatura("Marta",6000,1998,10,30);
+		
+		/*
+		 * casting para utilizar los metodos de la clase hija
+		 * en un array de la clase padre
+		 * 
+		 * convierte a tipo jefatura un objeto de tipo empleado(misEmpleados)
+		 */
+		
+		Jefatura jefa_Finanzas=(Jefatura) misEmpleados[5];
+		
+		jefa_Finanzas.estableceIncentivo(5000);
+		
+		//subir el sueldo
 		
 		for (Empleado e : misEmpleados) {
 			
 			e.subeSueldo(5);
-			System.out.println();
+			
 		}
 		
-		/*Empleado empleado1=new Empleado("Paco gomez", 2500.00,1990,12,17);
-		Empleado empleado2=new Empleado("ana lopez", 1985.50,1999,06,02);
-		Empleado empleado3=new Empleado("David lopez", 4500.00,2020,1,15);*/
+
+		//imprimir array
 		
-		/*
-		 * usamos el metodo de la clase que hemos creado
-		 */
-		/*empleado1.subeSueldo(5);
-		empleado2.subeSueldo(5);
-		empleado3.subeSueldo(10);*/
-		
-		//imprimimos
-		
-		/*System.out.println("Nombre: "+empleado1.getNombre()+ " ||Sueldo: "+empleado1.getSueldo()
-		+ " ||Fecha de alta: "+empleado1.getFechaContrato());
-		
-		System.out.println("Nombre: "+empleado2.getNombre()+ " ||Sueldo: "+empleado2.getSueldo()
-		+ " ||Fecha de alta: "+empleado2.getFechaContrato());
-		
-		System.out.println("Nombre: "+empleado3.getNombre()+ " ||Sueldo: "+empleado3.getSueldo()
-		+ " ||Fecha de alta: "+empleado3.getFechaContrato());*/
-		
-		
+		for (Empleado e : misEmpleados) {
+			
+			System.out.println("Nombre: "+e.getNombre()+ " Sueldo: "+e.getSueldo()
+			   +" fecha de alta: "+e.getFechaContrato());
+			System.out.println();
+		}
 		
 		
 		
@@ -72,6 +84,8 @@ class Empleado{
 	private String nombre;	
 	private double sueldo;
 	private Date altaContrato;
+	private static int IdSiguiente;
+	private int Id;
 	
 	//constructor______________________
 	
@@ -88,12 +102,17 @@ class Empleado{
 		
 		altaContrato=calendario.getTime();
 		
+		//le proporcionamos un campi Id, que se genera alearoriamente
+		
+		++IdSiguiente;
+		
+		Id=IdSiguiente;
 	}
 	
      //Getters__________________________
 	
-	public String getNombre() {
-		return nombre;
+	public String getNombre() { // nos devuelve el nombre y el Id aleatorio
+		return nombre + " Id: "+Id;
 	}
 
 	public double getSueldo() {
@@ -121,7 +140,7 @@ class Empleado{
 }
 
 /*
- * creamos clase que hereda de empleado------------------------------------------
+ * creamos clase JEFATURA  que hereda de empleado------------------------------------------
 */
 
 class Jefatura extends Empleado{
@@ -146,7 +165,7 @@ class Jefatura extends Empleado{
 	 * sobreescribimos el getter de la clase padre
 	 */
 	
-	public double getSueldo() {
+	public final double getSueldo() {// nota al final....
 		
 		double sueldoJefe=super.getSueldo();//usamos el geter de la clase padre para que me devuelva el sueldo
 		
@@ -154,15 +173,32 @@ class Jefatura extends Empleado{
 		
 	}
 	
-	
 	private double incentivo;
 	
-	
-	
-	
-	
-	
-	
 }
+
+//GERARQUIA, creacion de la clase DIRECTOR, que hereda de la clase JEFATURA
+
+//--------------------------------------------------------------------------------------------------
+
+final class Director extends Jefatura{//final= no se puede heredar de esta clase
+
+	public  Director(String nom, double sue, int agno, int mes, int dia) {
+		
+		super(nom, sue, agno, mes, dia);
+
+	}	
+}
+
+/*
+ * NOTA: el id se eltablece en el orden de introduccion 
+ * en el programa de los objetos, mientras que el orden
+ * de impresion es distinto.
+ * 
+ * final, se pude usar tanto en clases como en metodos, para
+ * evitar que se herede de una clase o que
+ * se sobreescriba un metodo de la superclase cuando
+ * se hereda de esta.
+ */
 
 
