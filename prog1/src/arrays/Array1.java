@@ -47,6 +47,6 @@ public class Array1 {
 		
 		System.out.println("valor del indice "+i+" = "+matriz2[i]);
 	}
-	}
+	}//cambios en git
 
 }
