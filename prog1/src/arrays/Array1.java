@@ -13,7 +13,7 @@ public class Array1 {
 		//rellenamos el array de forma manual:
 		
 		matriz1[0]=5;		
-		matriz1[1]=38;		
+		matriz1[1]=35;		
 		matriz1[2]=-15;		
 		matriz1[3]=92;		
 		matriz1[4]=51;
